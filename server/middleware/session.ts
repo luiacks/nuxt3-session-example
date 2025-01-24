@@ -6,12 +6,7 @@ type sessionDataType = {
 // 型の拡張
 declare module "h3" {
   interface H3EventContext {
-    session: {
-      readonly id: string | undefined;
-      readonly data: sessionDataType;
-      update: (update: sessionDataType) => Promise<sessionDataType>;
-      clear: () => Promise<any>;
-    };
+    session: Awaited<ReturnType<typeof useSession<sessionDataType>>>;
   }
 }
 
